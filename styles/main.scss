@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700&display=swap');
+
+// custom colors 
+$theme-colors: (
+  "orange": #FF9900,
+  "light-green": #DAFFE9,
+  "custom-green": #13CA60,
+  "custom-black": #18191A,
+  "custom-blue": #013060,
+  "custom-text-black-1": #2D3436,
+  "custom-text-blue-2": #194F5B
+);
+
+// color overwrites
+$border-color: #B2BEC3;
+$hr-border-color:#EFF0F0;
+
+// typography overwrites
+$h2-font-size: 2.25rem !default;
+$h3-font-size: 1.875rem !default;
+$h5-font-size: 1.125rem !default;
+$display4-size: 3.75rem !default;
+$font-weight-bold: 500 !default;
+$font-weight-bolder: 600 !default;
+$line-height-sm: 1.5 !default;
+$line-height-lg: 1.688 !default;
+$line-height-xl: 2.688rem;
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// resets
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Barlow Condensed', sans-serif;
+  max-width: 93.75rem;
+  margin: auto; 
+  // side padding on each section
+  section, footer {
+    padding: 0 .4rem;
+  }
+
+  // selecting all sections that needed specific line height to avoid repetition
+  .secondary-info-section,
+  .info-charts-section,
+  .info-charts-section-secondary{
+    p {
+      line-height: $line-height-lg;
+    }
+  }
+  
+  .prefooter-info-section {
+    p {
+      line-height: $line-height-xl;
+    }
+  }
+
+  // hero image in header
+  .header-section {
+    background: #18191A url(../images/hero-image.png);
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+
+    @media (max-width: 575.98px) { 
+      background-position: calc(100% + 205px);
+     }
+     
+     // content in header
+    .header-content {
+      max-width: 34.5rem;
+
+      h1 {
+        @include media-breakpoint-between(xs, md) {
+          @include font-size(2.25rem);
+        }
+      }
+
+      p {
+        @include font-size(1.75rem);
+      }
+
+      .content-button {
+        max-width: 22.5rem;
+      }
+    }
+  }
+
+  // light green section 
+  .info-section {
+
+    img {
+      @include media-breakpoint-between(xs, md) {
+      width: 7.375rem;
+    }
+    }
+
+    h2 {
+      @include font-size(3.125rem);
+      @include media-breakpoint-between(xs, md) {
+        @include font-size(1.875rem);
+      }
+    }
+  }
+
+  // section that follows after light green section. 
+  .secondary-info-section {
+    @include media-breakpoint-up(md) { 
+    width: 80%;
+    margin: auto;
+
+      span {
+        max-width: 22rem;
+        margin: auto;
+      }
+    }
+
+    .question-mark {
+      margin-bottom: -.35rem;
+      margin-left: -.5rem;
+    }
+    @include media-breakpoint-down(lg) { 
+      border: none;
+     }
+
+     .text-icon {
+       margin-bottom: -.3rem;
+     }
+
+  }
+
+  // section that needed elements position to be manipulated
+  .info-charts-section {
+    
+    .container__grid {
+      display: grid;
+      
+      .calendar-icon-title {
+        margin-bottom: -.25rem;
+      }
+
+      @include media-breakpoint-up(md) { 
+        width: 80%;
+        margin: auto;
+        grid-template-areas:"title title"
+                            "top-left  top-right"
+                            "top-left  mid-right";
+        grid-template-rows: minmax(auto, 1fr);
+        grid-template-columns: minmax(47.5%, 1fr);
+        column-gap: 2.5rem;
+    
+        .section-04-title {
+          grid-area: title;
+        }
+
+        .grid-text-top-left {
+          grid-area: top-left;
+        }
+
+        .grid-text-top-right {
+          grid-area: top-right 
+        } 
+
+        .grid-chart-bot-right {
+          grid-area: mid-right;
+        }
+      }
+    }
+  }
+
+.info-charts-section-secondary {
+  padding-bottom: 7rem;
+
+  @include media-breakpoint-down(lg) { 
+    padding-bottom: 0;
+  }
+}
+
+  // section above footer
+  .prefooter-info-section {
+    
+    p {
+      max-width: 35rem;
+    }
+
+    button {
+      max-width: 22.5rem;
+    }
+  }
+}
+
+
+
+
+
